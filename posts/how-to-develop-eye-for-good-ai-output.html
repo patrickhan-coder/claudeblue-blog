@@ -25,9 +25,61 @@
         "description": "The Review Paradox: the more you use AI, the less qualified you become to judge its work. Developers are already building systems to fight it. Here's what every knowledge worker can learn.",
         "datePublished": "2026-03-20",
         "dateModified": "2026-03-20",
-        "author": { "@type": "Person", "name": "Patrick Han", "url": "https://www.linkedin.com/in/patrickwjhan/" },
-        "publisher": { "@type": "Organization", "name": "Claude Blue" },
-        "keywords": ["review paradox AI", "AI output quality", "how to evaluate AI work"]
+        "author": {
+            "@type": "Person",
+            "name": "Patrick Han",
+            "url": "https://www.linkedin.com/in/patrickwjhan/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Claude Blue"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://claudeblue.com/posts/how-to-develop-eye-for-good-ai-output.html"
+        },
+        "keywords": ["review paradox AI", "AI output quality", "how to evaluate AI work", "AI eroding skills", "knowledge worker AI judgment", "spec-driven AI workflow", "AI supervision skills"]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "What is the Review Paradox in AI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The Review Paradox describes the situation where the more you rely on AI to do execution work, the more your ability to judge the quality of that work degrades. Developers who fully delegated to AI finished tasks fastest but scored worst on evaluations. The skills needed to supervise AI â judgment, debugging, domain expertise â are the very skills that atrophy when AI handles all the execution."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How can knowledge workers maintain quality judgment when using AI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The emerging best practice is to shift human review from output to intent: review specs and architecture, not code or documents. Define the problem clearly before AI executes, then verify that AI's output matches the spec. Also, deliberately practice manual work occasionally to maintain domain expertise, and use AI's learning modes rather than just accepting answers."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Does the Review Paradox apply to non-developers?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, and potentially more dangerously. When code breaks, you get an error message. When a strategy document misses the point or an AI-generated analysis is subtly wrong, there's no error message â it just looks fine. The Review Paradox applies to anyone whose work involves judgment: marketers, analysts, consultants, managers, and any knowledge worker who reviews AI-generated output."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is spec-driven AI workflow?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "A spec-driven AI workflow separates the 'what and why' from the 'how.' Humans write detailed specifications â defining the problem, understanding trade-offs, translating business needs into requirements. AI then executes based on those specs. Humans review whether the spec itself is right (which requires real expertise), while AI verifies whether its output conforms to the spec (which AI does well). Some teams are making this mandatory to prevent skill erosion."
+                }
+            }
+        ]
     }
     </script>
 
@@ -48,51 +100,67 @@
         </div>
     </nav>
 
+    <div class="post-hero">
+        <div class="feed-thumb thumb-claude-ai">
+            <div class="feed-thumb-title">Golden hour thinking</div>
+            <div class="feed-thumb-sub">How can I help you today?</div>
+            <div class="thumb-badge">Learning &check;</div>
+        </div>
+    </div>
+
     <header class="post-header">
         <div class="post-meta-top">
             <span>March 20, 2026</span>
-            <span>&#183;</span>
+            <span style="color: var(--gray-300);">&middot;</span>
             <span>6 min read</span>
         </div>
         <h1>How to Develop an Eye for Good AI Output</h1>
     </header>
 
     <article class="post-body">
+
         <p><em>On the Review Paradox</em></p>
+
         <p>At our company's weekly Thursday AI meetup, one of our AI engineers shared a line from a recent blog post by Tom Wojcik that stopped me cold:</p>
-        <blockquote>"Developers who fully delegated to AI finished tasks fastest but scored worst on evaluations."</blockquote>
-        <p>He called it the Review Paradox. The more you use AI, the less qualified you become to review its output.</p>
+
+        <blockquote>"Developers who fully delegated to AI finished tasks fastest but scored worst on evaluations. The novices who benefit most from AI productivity are exactly the ones who need debugging skills to supervise it, and AI erodes those skills first."<br><br><small>â Tom Wojcik, <a href="https://tomwojcik.com/posts/2026-02-15/finding-the-right-amount-of-ai/" target="_blank">"Finding the Right Amount of AI"</a></small></blockquote>
+
+        <p>He called it the Review Paradox. The more you use AI, the less qualified you become to review its output. You can't separate the two. The eye for good work doesn't come from reading about good work. It comes from doing it yourself, clumsily at first, getting torn apart by a senior colleague, building intuition through years of practice.</p>
+
         <p>This topic has been burning through developer communities lately. But I want to talk about the rest of us. The office workers. The non-developers.</p>
+
         <h2>What's left when AI does the execution?</h2>
-        <p>When AI handles most of the actual execution, what's left for us? Review. Management. Planning. Strategy. Sounds impressive. But how did we learn to do those things in the first place?</p>
-        <p>We learned by doing the grunt work ourselves. By getting ripped apart by our boss at a previous job. The judgment to review someone's output exists because we've done that work hundreds of times ourselves.</p>
+
+        <p>When AI handles most of the actual execution, the writing, the analysis, the formatting, what's left for us? Review. Management. Planning. Strategy. Sounds impressive. But how did we learn to do those things in the first place?</p>
+
+        <p>We learned by doing the grunt work ourselves. By getting ripped apart by our boss at a previous job. By making mistakes and being corrected. The judgment to review someone's output exists because we've done that work hundreds of times ourselves.</p>
+
+        <p>Take that away, and what happens? AI executes. You review. But you don't have the muscle to judge whether the output is actually good. And the scariest part is that you don't even notice you're getting duller.</p>
+
         <h2>How developers are fighting back</h2>
-        <p>Teams are actively building systems to counter the Review Paradox. The core idea: stop reviewing code. Review the spec and architecture instead.</p>
-        <p>Before any code gets written, you write a proper spec. Define the problem clearly. Translate business language into product requirements.</p>
-        <p>Then AI writes the code, and checks whether the code follows the spec. Judging whether the spec itself is right, that's still the human job.</p>
+
+        <p>Something interesting is happening in the developer world. Teams are actively building systems to counter the Review Paradox. The core idea: stop reviewing code. Review the spec and architecture instead.</p>
+
+        <p>Before any code gets written, you write a proper spec. Define the problem clearly. Understand the trade-offs. Translate business language into product requirements, product requirements into techm¸^ological architecture. Humans read and review the spec, the architecture, the verification plan. They understand what is being built and why.</r>
+, ?p>Then AI writes the code, and checks whether the code follows the spec. Compliance verification is something AI does well. Judging whether the spec itself is right, that's still the human job.</p>
+
+        <p>Some teams are making this mandatory. If you don't enforce it, nobody does it. Everyone just vibes with AI and ships whatever comes out.</p>
+
+        <h2>Why bother if the code works?</h2>
+
+        <p>If AI does the work and the code runs, why does it matter whether a human understands it?</p>
+
+        <p>Because if you don't engage, you get a little duller every day without realizing it. But if you engage at the spec and architecture level, the situation actually gets better. You end up spending your time on the parts that matter most instead of mechanical execution.</p>
+
+        <blockquote>"Software engineering was never just about typing code. It's defining the problem well, understanding the problem, translating the language from business to product to code, clarifying ambiguity, making tradeoffs, understanding what breaks when you change something."</blockquote>
+
+        <p>Replace "software engineering" with any knowledge work, and it still holds.</p>
+
         <h2>What this means for the rest of us</h2>
-        <p>For non-developers, the shift is the same. I no longer review every cell in a spreadsheet. I ask whether the data is answering the right question.</p>
-        <p>Writing forces you to actually know your subject. In the AI era, AI can churn out blog posts. But writing by hand, even with Claude's help, is my way of keeping the review muscle alive.</p>
-        <section class="faq">
-            <h2>Frequently Asked Questions</h2>
-            <div class="faq-item">
-                <h3>What is the Review Paradox in AI?</h3>
-                <p>The more you rely on AI to do execution work, the more your ability to judge the quality degrades.</p>
-            </div>
-            <div class="faq-item">
-                <h3>How can knowledge workers maintain quality judgment?</h3>
-                <p>Shift review from output to intent: review specs and architecture, not code or documents.</p>
-            </div>
-        </section>
-        <div class="share">
-            <span>Share</span>
-            <a href="https://www.reddit.com/r/ClaudeBlue/submit" target="_blank">Reddit</a>
-            <a href="https://twitter.com/intent/tweet" target="_blank">Twitter/X</a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/" target="_blank">LinkedIn</a>
-        </div>
-    </article>
-    <footer class="footer">
-        <p>Claude Blue &#183; <a href="../about.html">About</a> &#183; <a href="https://www.linkedin.com/in/patrickwjhan/" target="_blank">LinkedIn</a> &#183; <a href="https://www.reddit.com/r/ClaudeBlue/" target="_blank">Reddit</a></p>
-    </footer>
-</body>
-</html>
+
+        <p>For non-developers, the shift is the same. I no longer review every cell in a spreadsheet. I ask whether the data is answering the right question. I no longer write documents from scratch. I judge whether what AI produced actually captures what we were trying to say.</r>
+, ?p>Developers are building team-level cultures around this. Shared standards for reviewing AI output, processes where humans stay in the loop at the level of intent rather than execution. Non-developers need something like this too.</r>
+, ?p>One thing I recently discovered: Claude has a "Learning" mode that, instead of just giving you the answer, walks you through questions and teaches you interactively. A few months ago, I would have thought "just give me the answer." But now it makes complete sense. If the point is to keep building judgment and understanding, having AI spoon-feed you answers is exactly the wrong move.</r>
+, ?p>This is similar to why I've been writing on my blog for years. Not to share with others, but to understand things deeply myself. Writing forces you to actually know your subject. In the AI era, AI can churn out blog posts. But writing by hand, even with Claude's help, is my way of keeping the review muscle alive. Nobody asked me to. It's just how I train.</p>
+
+        <h2>A QUeYbÕëÜ[ÝOÚÜ[Ù^IÜÈRK\ÝÙ\YÛÜÙÝÜËÚXÚ\ØXÚÈ[ÝH[È\ÈYÚÏÜÜK[X[ÈÚÝ[\XÝH]Y]ÈH]X[]HÙÛÙH[ØÝ[Y[ËÏRH\YY\ÈÜXÈÛÛ\X[ÙNÈ[X[È]Y]ÈHÜXÜÈ[\Ú]XÝ\KÏËRHÛHÜ]\ÈÛÙH[ØÝ[Y[ÎÈ]\\ÙHRHÜ\YXØ][ÛÏÚÚ\HÜXÜÈ[Ú\\ÝÜ[HYÙÙ\]Y\Ý[ÛÝÈÈÙHZ[X\[È]\ØÛH[HRH\K\ÜXÚX[HÚ[HÛ[Ù[ÙÙ][ÈY[ÜY[ÛÜXÝYHÙ[[ÜÛÛXYÝY\È\È\Ø\X\[ÏÏÜKKHQSÎTHÙXÝ[ÛKOÙXÝ[ÛÛ\ÜÏH\H\]Y[H\ÚÙY]Y\Ý[ÛÏÚ]Û\ÜÏH\KZ][HÏÚ]\ÈH]Y]È\YÞ[ROÏÚÏH]Y]È\YÞ\ØÜX\ÈHÚ]X][ÛÚ\HH[ÜH[ÝH[HÛRHÈÈ^XÝ][ÛÛÜËH[ÜH[Ý\X[]HÈYÙHH]X[]HÙ]ÛÜÈYÜY\Ë][Ü\ÈÚÈ[H[YØ]YÈRH[\ÚY\ÚÜÈ\Ý\Ý]ØÛÜYÛÜÝÛ][X][ÛËHÚÚ[ÈYYYÈÝ\\\ÙHRH8 %YÛY[XYÙÚ[ËÛXZ[^\\ÙH8 %\HH\HÚÚ[È]]ÜHÚ[RH[\È[H^XÝ][ÛÜÙ]]Û\ÜÏH\KZ][HÏÝÈØ[ÛÝÛYÙHÛÜÙ\ÈXZ[Z[]X[]HYÛY[Ú[\Ú[ÈROÏÚÏH[Y\Ú[È\ÝXÝXÙH\ÈÈÚY[X[]Y]ÈÛHÝ]]È[[]Y]ÈÜXÜÈ[\Ú]XÝ\KÝÛÙHÜØÝ[Y[ËY[HHØ[HÛX\HYÜHRH^XÝ]\Ë[\YH]RIÜÈÝ]]X]Ú\ÈHÜXË[ÛË[X\][HXÝXÙHX[X[ÛÜÈØØØ\Ú[Û[HÈXZ[Z[ÛXZ[^\\ÙKÜÙ]]Û\ÜÏH\KZ][HÏÙ\ÈH]Y]È\YÞ\HÈÛY][Ü\ÏÏÚÏ[[Ý[X[H[ÜH[Ù\Ý\ÛKÚ[ÛÙHXZÜË[ÝHÙ][\ÜY\ÜØYÙKÚ[HÝ]YÞHØÝ[Y[Z\ÜÙ\ÈHÚ[Ü[RKYÙ[\]Y[[\Ú\È\ÈÝXHÜÛË\IÜÈÈ\ÜY\ÜØYÙH8 %]\ÝÛÚÜÈ[KH]Y]È\YÞ\Y\ÈÈ[[ÛHÚÜÙHÛÜÈ[Û\ÈYÛY[X\Ù]\Ë[[\ÝËÛÛÝ[[ËX[YÙ\Ë[[HÛÝÛYÙHÛÜÙ\ÚÈ]Y]ÜÈRKYÙ[\]YÝ]]ÜÙ]]Û\ÜÏH\KZ][HÏÚ]\ÈÜXËY][RHÛÜÙÝÏÏÚÏHÜXËY][RHÛÜÙÝÈÙ\\]\ÈHÚ][ÚHÛHHÝË[X[ÈÜ]H]Z[YÜXÚYXØ][ÛÈ8 $ÈY[[ÈHØ[K[\Ý[[ÈYK[ÙË[Û][È\Ú[\ÜÈYYÈ[È\]Z\[Y[ËRH[^XÝ]\È\ÙYÛÜÙHÜXÜË[X[È]Y]ÈÚ]\HÜXÈ]Ù[\ÈYÚÚ[HRH\YY\ÈÚ]\]ÈÝ]]ÛÛÜ\ÈÈHÜXËÛÛYHX[\È\HXZÚ[È\ÈX[]ÜHÈ][ÚÚ[\ÜÚ[ÛÜÙ]ÜÙXÝ[ÛKKHÚ\HKO]Û\ÜÏHÚ\HÜ[Ú\OÜÜ[HYHÎËÝÝÝËY]ÛÛKÜÐÛ]YPYKÜÝXZ]Ý\ZÎËØÛ]YXYKÛÛKÜÜÝËÚÝË]ËY][ÜY^YKYÜYÛÛÙXZK[Ý]][	]ORÝÉLÉL][Ü	L[L^YILÜLÛÛÙ	LRILÝ]]\Ù]HØ[ÈY]ØOHYHÎËÝÚ]\ÛÛKÚ[[ÝÙY]Ý\ZÎËØÛ]YXYKÛÛKÜÜÝËÚÝË]ËY][ÜY^YKYÜYÛÛÙXZK[Ý]][	^UIL]Y]ÉL\YÞ	LÐILÝÉLÉL][Ü	L[L^YILÜLÛÛÙ	LRILÝ]]\Ù]HØ[ÈÚ]\ÖØOHYHÎËÝÝÝË[ÙY[ÛÛKÜÚ\[ËÜÚ\K[ÙÙ]KÏÝ\ZÎËØÛ]YXYKÛÛKÜÜÝËÚÝË]ËY][ÜY^YKYÜYÛÛÙXZK[Ý]][\Ù]HØ[È[ÙY[ØOÙ]Ø\XÛO]Û\ÜÏHÝÛKXÝHÙIÜH[YÝ\[È\ÈÝ]ÙÙ]\ÜHYHÎËÝÝÝËY]ÛÛKÜÐÛ]YPYKÈ\Ù]HØ[ÈÚ[ÐÛ]YPYOØOÙ]ÛÝ\Û\ÜÏHÛÝ\Û]YHYH	ZYÝÈHYHØXÝ][XÝ]ØO	ZYÝÈHYHÎËÝÝÝË[ÙY[ÛÛKÚ[Ü]XÚÝÚ[È\Ù]HØ[È[ÙY[ØO	ZYÝÈHYHÎËÝÝÝËY]ÛÛKÜÐÛ]YPYKÈ\Ù]HØ[ÈY]ØOÜÙÛÝ\ØÙOÚ[
